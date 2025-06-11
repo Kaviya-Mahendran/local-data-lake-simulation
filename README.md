@@ -23,7 +23,7 @@ Getting Started
 Follow these steps to quickly set up and run the entire data lake simulation on your local machine.
 
 Prerequisites
-Make sure you have these installed before you begin:
+
 
 Docker Desktop: Running and available.
 Python 3.8+: Ensure python3 and pip are accessible from your terminal.
@@ -34,6 +34,8 @@ Start by cloning this project's repository to your local machine:
 
 git clone <YOUR_REPOSITORY_URL> # Replace with your actual GitHub repository URL
 cd data-lake-simulation-localstack # Navigate into your project directory
+
+
 2. Install Python Dependencies to manage project dependencies.
 
 
@@ -71,12 +73,16 @@ This script will read data from your local data/raw folder and upload it into th
 
 
 python3 scripts/ingest_data.py
+
+
 2. Data Transformation (ETL)
 This script will read the raw data from S3, perform necessary transformations (e.g., add total_price column), and then save the refined data into the processed S3 bucket in Parquet format.
 
 
 
 python3 scripts/transform_data.py # Adjust script name if different (e.g., setup_glue.py)
+
+
 3. Data Analysis/Querying
 This script demonstrates how to directly query and analyze the processed Parquet data stored in LocalStack S3 using Pandas.
 
