@@ -1,0 +1,8 @@
+order_id,product_name,quantity,unit_price,customer_id,order_date
+1001,Laptop,1,1200.00,C001,2024-01-05
+1002,Mouse,2,25.50,C002,2024-01-05
+1003,Keyboard,1,75.00,C001,2024-01-06
+1004,Monitor,1,300.00,C003,2024-01-06
+1005,Laptop,1,1200.00,C002,2024-01-07
+1006,Webcam,1,50.00,C001,2024-01-07
+1007,Headphones,1,150.00,C003,2024-01-07

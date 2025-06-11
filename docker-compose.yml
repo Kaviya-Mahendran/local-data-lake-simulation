@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  localstack:
+    container_name: "${LOCALSTACK_HOST:-localstack_main}"
+    image: localstack/localstack:2.3
+    ports:
+      # These ports allow your local machine to talk to LocalStack services
+      - "127.0.0.1:4510-4559:4510-4559" # External services port range
+      - "127.0.0.1:4566:4566"          # Default LocalStack port for common services
+    environment:
+      # These environment variables tell LocalStack which AWS services to start
+      - SERVICES=s3,glue,athena # We need S3 (storage), Glue (conceptual data catalog), Athena (conceptual query)
+      - DEBUG=1                 # Turns on helpful debug logs for LocalStack
+      - DATA_DIR=/tmp/localstack/data # Where LocalStack stores its data inside the container
+      - LOCALSTACK_HOSTNAME=localhost # Ensures services are accessible via localhost
+      - AWS_ACCESS_KEY_ID=test # Dummy AWS credentials (LocalStack doesn't use real ones)
+      - AWS_SECRET_ACCESS_KEY=test # Dummy AWS credentials
+      - AWS_DEFAULT_REGION=us-east-1 # Dummy AWS region
+    volumes:
+      # This maps a folder on your Mac to a folder inside the Docker container
+      # So LocalStack's data persists even if the container restarts
+      - "${LOCALSTACK_VOLUME_DIR:-./localstack_data}:/tmp/localstack"
+      # This allows LocalStack to manage other Docker containers if needed
+      - "/var/run/docker.sock:/var/run/docker.sock"
